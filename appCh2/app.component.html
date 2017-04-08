@@ -1,0 +1,46 @@
+<div>
+    <p>Name: {{name}}</p>
+
+    <p>Age: {{age}}</p>
+
+    <p><input type="text" [value]="name"/></p>
+
+    <p [textContent]="name"></p>
+
+    <p>
+        <button (click)="addClick($event)">addClick</button>
+        &nbsp;
+        <button on-click="unClick($event)">unClick</button>
+        &nbsp;&nbsp;
+        <span>{{clicks}}</span>
+    </p>
+
+    <div><p>Hi, {{name}}</p>
+        <input type="text" [(ngModel)]="name"/>&nbsp;&nbsp;
+        <input type="text" [(ngModel)]="name"/>
+    </div>
+    <hr/>
+
+
+
+    <h2>Style in first (app) component. Name: {{name}}</h2>
+    <p>
+        <!--<child-comp></child-comp>-->
+        <child-comp
+                [userName]="name"
+                [userAge]="age"
+
+                (onChange)="onChange($event)"
+
+                [(someUserName)]="someName"
+        >
+            <h2>Hi, {{name}}!</h2>
+        </child-comp>
+        <input type="number" [(ngModel)]="age" />
+        <br/>
+        Clicks: {{clicks}}
+        <br/>
+        Changed name: {{someName}}
+    </p>
+
+</div>

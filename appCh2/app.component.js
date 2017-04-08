@@ -9,42 +9,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var Item = (function () {
-    function Item(purchase, price) {
-        this.purchase = purchase;
-        this.price = price;
-        this.done = false;
-    }
-    return Item;
-}());
-exports.Item = Item;
 var AppComponent = (function () {
     function AppComponent() {
-        this.items = [
-            { purchase: "Хлеб", done: false, price: 15.9 },
-            { purchase: "Масло", done: false, price: 60 },
-            { purchase: "Картофель", done: true, price: 22.6 },
-            { purchase: "Сыр", done: false, price: 310 }
-        ];
+        this.name = "Tom";
+        this.someName = "Ghost";
+        this.age = 25;
+        this.clicks = 0;
     }
-    AppComponent.prototype.addItem = function (text, price) {
-        if (text == null || text == undefined || text.trim() == "")
-            return;
-        if (price == null || price == undefined)
-            return;
-        this.items.push(new Item(text, price));
+    AppComponent.prototype.addClick = function ($event) {
+        this.clicks++;
+        console.log($event);
+    };
+    AppComponent.prototype.unClick = function ($event) {
+        if (this.clicks > 0)
+            this.clicks--;
+        console.log($event);
+    };
+    AppComponent.prototype.onChange = function (flag) {
+        if (flag) {
+            this.clicks++;
+        }
+        else {
+            this.clicks--;
+        }
+        console.log("click in parent: " + this.clicks);
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            styles: [
-                "h1{\n        color:navy;\n        }",
-                "p{font-size:13px; font-family:Verdana;}\n        th{color:red}",
-                ":host{\n        font-style: italic;\n        }"
-            ],
-            styleUrls: ['purchaseApp/app.component.css'],
+            styles: [],
+            styleUrls: ['appCh2/app.component.css'],
             //template: `<h1>Hello Angular 2</h1>`,
-            templateUrl: 'purchaseApp/app.component.html'
+            templateUrl: 'appCh2/app.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

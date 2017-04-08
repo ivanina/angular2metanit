@@ -7,7 +7,8 @@
         // указываем загрузчику System, где искать модули
         map: {
             //app: 'app',
-            app: 'purchaseApp',
+            //app: 'purchaseApp',
+            app: 'appCh2',
             // пакеты angular
             '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
             '@angular/common': 'npm:@angular/common/bundles/common.umd.js',

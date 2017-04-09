@@ -13,6 +13,7 @@ var AppComponent = (function () {
     function AppComponent() {
         this.name = "Tom";
         this.someName = "Ghost";
+        this.nameLocal = "Ghost in the shield";
         this.age = 25;
         this.clicks = 0;
     }
@@ -33,6 +34,18 @@ var AppComponent = (function () {
             this.clicks--;
         }
         console.log("click in parent: " + this.clicks);
+    };
+    AppComponent.prototype.ngOnChanges = function (changes) {
+        console.log("[p] - ngOnChanges");
+        for (var propName in changes) {
+            var chng = changes[propName];
+            var cur = JSON.stringify(chng.currentValue);
+            var prev = JSON.stringify(chng.previousValue);
+            this.log(propName + ": currentValue = " + cur + ", previousValue = " + prev);
+        }
+    };
+    AppComponent.prototype.log = function (msg) {
+        console.log("[p]" + msg);
     };
     AppComponent = __decorate([
         core_1.Component({

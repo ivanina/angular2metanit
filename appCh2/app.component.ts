@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, SimpleChanges} from '@angular/core';
 @Component({
     selector: 'my-app',
     styles: [],
@@ -9,6 +9,7 @@ import {Component} from '@angular/core';
 export class AppComponent {
     name:string = "Tom";
     someName:string = "Ghost";
+    nameLocal:string = "Ghost in the shield";
     age:number = 25;
     clicks:number = 0;
     addClick($event):void {
@@ -27,6 +28,21 @@ export class AppComponent {
             this.clicks--;
         }
         console.log("click in parent: "+this.clicks);
+    }
+
+
+    ngOnChanges(changes: SimpleChanges) {
+        console.log("[p] - ngOnChanges");
+        for (let propName in changes) {
+            let chng = changes[propName];
+            let cur  = JSON.stringify(chng.currentValue);
+            let prev = JSON.stringify(chng.previousValue);
+            this.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+        }
+    }
+
+    private log(msg: string) {
+        console.log("[p]"+msg);
     }
 
 }

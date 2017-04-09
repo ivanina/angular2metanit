@@ -14,7 +14,7 @@ var ChildComponent = (function () {
         this.name = "John";
         this.childClicks = 0;
         this.onChange = new core_1.EventEmitter();
-        this.changeName = new core_1.EventEmitter();
+        this.someUserNameChange = new core_1.EventEmitter();
     }
     Object.defineProperty(ChildComponent.prototype, "userAge", {
         get: function () {
@@ -44,7 +44,19 @@ var ChildComponent = (function () {
     };
     ChildComponent.prototype.onChangeName = function (name) {
         this.someUserName = name;
-        this.changeName.emit(name);
+        this.someUserNameChange.emit(name);
+    };
+    ChildComponent.prototype.ngOnChanges = function (changes) {
+        console.log("[ch] - ngOnChanges");
+        for (var propName in changes) {
+            var chng = changes[propName];
+            var cur = JSON.stringify(chng.currentValue);
+            var prev = JSON.stringify(chng.previousValue);
+            this.log(propName + ": currentValue = " + cur + ", previousValue = " + prev);
+        }
+    };
+    ChildComponent.prototype.log = function (msg) {
+        console.log("[ch]" + msg);
     };
     __decorate([
         core_1.Input(), 
@@ -66,7 +78,7 @@ var ChildComponent = (function () {
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
-    ], ChildComponent.prototype, "changeName", void 0);
+    ], ChildComponent.prototype, "someUserNameChange", void 0);
     ChildComponent = __decorate([
         core_1.Component({
             selector: 'child-comp',

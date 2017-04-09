@@ -9,5 +9,5 @@
     <button (click)="change(true)">+</button>&nbsp;<button (click)="change(false)">-</button>
 </p>
 <p>
-    Change name: <input [ngModel]="someUserName" (ngModelChange)="onChangeName($event)">
+    Change name: <input [ngModel]="someUserName" (ngModelChange)="onChangeName($event)" /> ({{someUserName}})
 </p>

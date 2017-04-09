@@ -40,7 +40,11 @@
         <br/>
         Clicks: {{clicks}}
         <br/>
-        Changed name: {{someName}}
+        Changed name: <input [(ngModel)]="someName" /> {{someName}}
     </p>
 
+    <hr/>
+    <p #userNameLocal>{{nameLocal}}</p>
+    <p>{{userNameLocal.textContent}}</p>
+    <input type="text" [(ngModel)]="nameLocal" />
 </div>

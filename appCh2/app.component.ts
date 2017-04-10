@@ -1,4 +1,5 @@
-import {Component, SimpleChanges} from '@angular/core';
+import {Component, SimpleChanges, ViewChild} from '@angular/core';
+import {ChildComponent} from "./child.component";
 @Component({
     selector: 'my-app',
     styles: [],
@@ -44,5 +45,12 @@ export class AppComponent {
     private log(msg: string) {
         console.log("[p]"+msg);
     }
+
+
+    @ViewChild(ChildComponent)
+    private counterComponent: ChildComponent;
+
+    increment() { this.counterComponent.counterIncrement(); }
+    decrement() { this.counterComponent.counterDecrement(); }
 
 }

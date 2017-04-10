@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var child_component_1 = require("./child.component");
 var AppComponent = (function () {
     function AppComponent() {
         this.name = "Tom";
@@ -47,6 +48,12 @@ var AppComponent = (function () {
     AppComponent.prototype.log = function (msg) {
         console.log("[p]" + msg);
     };
+    AppComponent.prototype.increment = function () { this.counterComponent.counterIncrement(); };
+    AppComponent.prototype.decrement = function () { this.counterComponent.counterDecrement(); };
+    __decorate([
+        core_1.ViewChild(child_component_1.ChildComponent), 
+        __metadata('design:type', child_component_1.ChildComponent)
+    ], AppComponent.prototype, "counterComponent", void 0);
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',

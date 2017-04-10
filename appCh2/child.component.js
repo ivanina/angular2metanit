@@ -13,6 +13,7 @@ var ChildComponent = (function () {
     function ChildComponent() {
         this.name = "John";
         this.childClicks = 0;
+        this.counter = 0;
         this.onChange = new core_1.EventEmitter();
         this.someUserNameChange = new core_1.EventEmitter();
     }
@@ -58,6 +59,18 @@ var ChildComponent = (function () {
     ChildComponent.prototype.log = function (msg) {
         console.log("[ch]" + msg);
     };
+    ChildComponent.prototype.counterIncrement = function () { this.counter++; };
+    ChildComponent.prototype.counterDecrement = function () { this.counter--; };
+    ChildComponent.prototype.changeParagraph = function () {
+        console.log(this.nameParagraph);
+        //TS2339:Property 'nativeElement' does not exist on type 'HTMLElement
+        //this.nameParagraph.nativeElement.textContent= "hell";
+        //DO NOTING
+    };
+    __decorate([
+        core_1.ViewChild("nameParagraph"), 
+        __metadata('design:type', HTMLElement)
+    ], ChildComponent.prototype, "nameParagraph", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)

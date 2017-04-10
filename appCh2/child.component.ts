@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, SimpleChanges} from '@angular/core';
+import {Component, Input, Output, EventEmitter, SimpleChanges, ViewChild} from '@angular/core';
 @Component({
     selector: 'child-comp',
     //template: ``,
@@ -8,6 +8,10 @@ import {Component, Input, Output, EventEmitter, SimpleChanges} from '@angular/co
 export class ChildComponent {
     name:string = "John";
     childClicks:number = 0;
+    counter:number = 0;
+
+    @ViewChild("nameParagraph")
+    nameParagraph: HTMLElement;
 
 
     @Input() userName:string;
@@ -60,4 +64,13 @@ export class ChildComponent {
         console.log("[ch]"+msg);
     }
 
+    counterIncrement():void {this.counter++;}
+    counterDecrement():void {this.counter--;}
+
+    changeParagraph():void {
+        console.log(this.nameParagraph);
+        //TS2339:Property 'nativeElement' does not exist on type 'HTMLElement
+        //this.nameParagraph.nativeElement.textContent= "hell";
+        //DO NOTING
+    }
 }

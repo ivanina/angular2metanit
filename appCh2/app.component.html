@@ -33,6 +33,8 @@
                 (onChange)="onChange($event)"
 
                 [(someUserName)]="someName"
+
+                #counter
         >
             <h2>Hi, {{name}}!</h2>
         </child-comp>
@@ -41,6 +43,12 @@
         Clicks: {{clicks}}
         <br/>
         Changed name: <input [(ngModel)]="someName" /> {{someName}}
+        <br/>
+        <br/> Counter (#counter): parent o child: <button (click)="counter.counterIncrement()">+</button>&nbsp;
+        <button (click)="counter.counterDecrement()">-</button>
+        <br/>
+        By ChildComponent: <button (click)="increment()">+</button>&nbsp;<button (click)="decrement()">-</button>
+
     </p>
 
     <hr/>

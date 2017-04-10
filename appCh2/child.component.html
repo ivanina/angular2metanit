@@ -11,3 +11,11 @@
 <p>
     Change name: <input [ngModel]="someUserName" (ngModelChange)="onChangeName($event)" /> ({{someUserName}})
 </p>
+<p>
+    Counter (#counter): {{counter}}
+</p>
+<p>
+    ViewChild. <br/>
+    Name of paragraph:<span #nameParagraph>p.1</span><br/>
+    <button (click)="changeParagraph()">Change</button> (Property 'nativeElement' does not exist on type 'HTMLElement)
+</p>
